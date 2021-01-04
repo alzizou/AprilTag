@@ -1,0 +1,3 @@
+<launch>
+	<node name="detect_ali" pkg="apriltag_ali" type="detect_ali.py" output="screen" />
+</launch>
