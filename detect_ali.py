@@ -15,8 +15,14 @@ while (result):
 	gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 	cv2.imwrite("/home/ali/ali_ws/AprilTag/image_gray.jpg",gray)
 	options = apriltag.DetectorOptions(families="tag36h11")
-	detector = apriltag.Detector(options)
+	detector = apriltag.Detector()
 	results = detector.detect(gray)
+	tf = results[0].tag_family
+	cent = results[0].center
+	corn = results[0].corners
+	print(tf)
+	print(cent)
+	print(corn)
 	result = False
 cam_obj.release()
 
