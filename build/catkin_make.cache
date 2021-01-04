@@ -1,2 +1,2 @@
 apriltag_ali
--DPYTHON_EXECUTABLE=/usr/bin/python3 -DCATKIN_DEVEL_PREFIX=/home/ali/ali_ws/AprilTag/devel -DCMAKE_INSTALL_PREFIX=/home/ali/ali_ws/AprilTag/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/ali/ali_ws/AprilTag/devel -DCMAKE_INSTALL_PREFIX=/home/ali/ali_ws/AprilTag/install -G Unix Makefiles

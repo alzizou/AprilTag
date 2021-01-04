@@ -13,13 +13,19 @@ cam_param = (100,100,200,200)
 cam_obj = cv2.VideoCapture(1)
 result = True
 time_stmp_ROS = 0.0
-json_data = String()
+publish_data = {}
+json_data = {}
+TF_matrix = np.zeros([4,4])
+Tag_center = np.zeros([1,2])
+Tag_corners = np.zeros([4,2])
+
 
 def clean_shutdown():
 	cam_obj.release()
 
 def detect_ali():
-	global time_stmp_ROS. result, cam_obj, tag_rel_pose
+	global time_stmp_ROS, result, cam_obj, tag_rel_pose, publish_data, json_data
+	global TF_matrix, Tag_center, Tag_corners
 	rospy.init_node("detect_ali",anonymous=True)
 	rate = rospy.Rate(100)
 	rospy.on_shutdown(clean_shutdown)
@@ -45,23 +51,29 @@ def detect_ali():
 		if ((not results)==0):
 			print(results[0].center)
 			print(results[0].corners)
-			TF_matrix, err1, err2 = detector.detection_pose(results[0], cam_param, tag_size=1, z_sign=1)
-			print(TF_matrix)
+			Tag_center[0][0] = results[0].center[0]
+			Tag_center[0][1] = results[0].center[1]
+			april_TF_matrix, err1, err2 = detector.detection_pose(results[0], cam_param, tag_size=1, z_sign=1)
+			print(april_TF_matrix)
 			print(err1)
 			print(err2)
 			for i in range(0,4):
+				Tag_corners[i][0] = results[0].corners[i][0]
+				Tag_corners[i][1] = results[0].corners[i][1]
 				tag_rel_pose[i] = 0.0
 				for j in range(0,4):
-					tag_rel_pose[i] = tag_rel_pose[i] + ( TF_matrix[i][j] * camera_pose[j] )
+					tag_rel_pose[i] = tag_rel_pose[i] + ( april_TF_matrix[i][j] * camera_pose[j] )
 			print(tag_rel_pose)
+			#publish_data["detection_center"] = [results[0].center[0],results[0].center[1]]
+			#publish_data["detection_corners0"] = [results[0].corners[0][0],results[0].corners[0][1]]
+			#publish_data["TF_Matrix"] = TF_matrix
+			publish_data["Relative_Pose"] = tag_rel_pose
 			result = False
 		#(END) Tag detection and pose estimation using AprilTag package
 		#---------------------------------------------------------------------------------------------------
 		#(START) Publishing data
-		json_data["detection"] = results
-		json_data["Transformation_Matrix"] = TF_matrix
-		json_data["Relative_Pose"] = tag_rel_pose
-		pub_apriltag.publish(json_data.dumps())
+		json_data = json.dumps(publish_data)
+		pub_apriltag.publish(json_data)
 		#(END) Publishing data
 		#---------------------------------------------------------------------------------------------------
 #	rospy.spin()
