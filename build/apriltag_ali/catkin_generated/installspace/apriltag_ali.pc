@@ -1,0 +1,8 @@
+prefix=/home/ali/ali_ws/AprilTag/install
+
+Name: apriltag_ali
+Description: Description of apriltag_ali
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
