@@ -6,9 +6,10 @@ import json
 import numpy as np
 import math as mt
 from std_msgs.msg import String
+from pupil_apriltags import Detector
 
 camera_pose = [0.0,0.0,0.0]
-cam_param = (100,100,200,200)
+cam_param = (2000,200,200,200)
 
 tag_rel_pose = [0.0,0.0,0.0]
 cam_obj = cv2.VideoCapture(1)
@@ -23,6 +24,14 @@ Euler_Sol1 = [0.0,0.0,0.0]
 Euler_Sol2 = [0.0,0.0,0.0]
 Quat = [0.0,0.0,0.0,0.0]
 Unit_Vector = [0.0,0.0,0.0]
+
+pupil_detector = Detector(families='tag36h11',
+                       nthreads=1,
+		       quad_decimate=1.0,
+		       quad_sigma=0.0,
+		       refine_edges=1,
+		       decode_sharpening=0.25,
+		       debug=0)
 
 Results_File_AprilTag_RelPos = open(r"/home/ali/ali_ws/AprilTag/logs/Results_File_AprilTag_RelPos.txt","w+")
 Results_File_AprilTag_Euler1 = open(r"/home/ali/ali_ws/AprilTag/logs/Results_File_AprilTag_Euler1.txt","w+")
@@ -119,7 +128,7 @@ def quat_eval(inp_tf):
 def unit_vector_eval(inp_tf):
 	# to compute the unit vector of the link in the drone frame
 	global Unit_Vector
-	local_vec = [0.0,0.0,-1.0]
+	local_vec = [0.0,0.0,+1.0]
 	for i in range(0,3):
 		Unit_Vector[i] = 0.0
 		for j in range(0,3):
@@ -154,6 +163,8 @@ def detect_ali():
 		options = apriltag.DetectorOptions(families="tag36h11")
 		detector = apriltag.Detector(options)
 		results = detector.detect(gray)
+		#results_pupil = pupil_detector.detect(gray, estimate_tag_pose=True, camera_params=cam_param, tag_size=1)
+		#print(results_pupil)
 		if ((not results)==0):
 			print(results[0].center)
 			print(results[0].corners)
@@ -204,6 +215,8 @@ def detect_ali():
 			publish_data["Quaternion"] = Quat
 			publish_data["Unit_Vector"] = Unit_Vector
 			result = False
+		else:
+			print("no tag is detected!")
 		#(END) Tag detection and pose estimation using AprilTag package
 		#---------------------------------------------------------------------------------------------------
 		#(START) Publishing data
