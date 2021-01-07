@@ -131,7 +131,15 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/ali/ali_ws/AprilTag/build/gtest/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/image_common/image_common/cmake_install.cmake")
   include("/home/ali/ali_ws/AprilTag/build/apriltag_ali/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/cam_calibration/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/image_pipeline/camera_calibration/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/image_common/camera_calibration_parsers/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/image_common/image_transport/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/image_common/camera_info_manager/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/image_common/polled_camera/cmake_install.cmake")
+  include("/home/ali/ali_ws/AprilTag/build/usb_cam/cmake_install.cmake")
 
 endif()
 

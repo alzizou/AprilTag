@@ -1,0 +1,8 @@
+prefix=/home/ali/ali_ws/AprilTag/install
+
+Name: cam_calibration
+Description: Description of cam_calibration
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
