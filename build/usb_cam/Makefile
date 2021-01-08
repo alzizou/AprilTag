@@ -68,27 +68,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\" \"main\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target install/strip
 install/strip: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
@@ -100,17 +79,6 @@ install/strip/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
 	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -134,6 +102,38 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\" \"main\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -183,66 +183,6 @@ usb_cam_node/fast:
 .PHONY : usb_cam_node/fast
 
 # Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_cpp: usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
-
-# Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_eus: usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-# Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_lisp: usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
-
-# Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_py: usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-.PHONY : std_srvs_generate_messages_py
-
-# fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
-
-# Convenience name for target.
 usb_cam/CMakeFiles/usb_cam.dir/rule:
 	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/usb_cam.dir/rule
 .PHONY : usb_cam/CMakeFiles/usb_cam.dir/rule
@@ -256,21 +196,6 @@ usb_cam: usb_cam/CMakeFiles/usb_cam.dir/rule
 usb_cam/fast:
 	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f usb_cam/CMakeFiles/usb_cam.dir/build.make usb_cam/CMakeFiles/usb_cam.dir/build
 .PHONY : usb_cam/fast
-
-# Convenience name for target.
-usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f CMakeFiles/Makefile2 usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_nodejs: usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /home/ali/ali_ws/AprilTag/build && $(MAKE) -f usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make usb_cam/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
 
 nodes/usb_cam_node.o: nodes/usb_cam_node.cpp.o
 
@@ -333,19 +258,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install"
-	@echo "... list_install_components"
-	@echo "... rebuild_cache"
 	@echo "... install/strip"
 	@echo "... usb_cam_node"
-	@echo "... std_srvs_generate_messages_cpp"
-	@echo "... std_srvs_generate_messages_eus"
-	@echo "... std_srvs_generate_messages_lisp"
-	@echo "... edit_cache"
-	@echo "... std_srvs_generate_messages_py"
 	@echo "... install/local"
-	@echo "... test"
 	@echo "... usb_cam"
-	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... test"
+	@echo "... list_install_components"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
 	@echo "... nodes/usb_cam_node.o"
 	@echo "... nodes/usb_cam_node.i"
 	@echo "... nodes/usb_cam_node.s"

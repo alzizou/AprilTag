@@ -1,2 +1,2 @@
 apriltag_ali:image_common/camera_calibration_parsers:image_common/camera_info_manager:image_common/image_common:image_common/image_transport:image_common/polled_camera:image_pipeline/camera_calibration:image_pipeline/depth_image_proc:image_pipeline/image_pipeline:image_pipeline/image_proc:image_pipeline/image_publisher:image_pipeline/image_rotate:image_pipeline/image_view:image_pipeline/stereo_image_proc:usb_cam
--DPYTHON_EXECUTABLE=/usr/bin/python3 -DCATKIN_DEVEL_PREFIX=/home/ali/ali_ws/AprilTag/devel -DCMAKE_INSTALL_PREFIX=/home/ali/ali_ws/AprilTag/install -G Unix Makefiles
+-DCATKIN_DEVEL_PREFIX=/home/ali/ali_ws/AprilTag/devel -DCMAKE_INSTALL_PREFIX=/home/ali/ali_ws/AprilTag/install -G Unix Makefiles
