@@ -1,8 +1,0 @@
-prefix=/home/ali/ali_ws/AprilTag/devel
-
-Name: image_publisher
-Description: Description of image_publisher
-Version: 1.15.3
-Cflags: -I/home/ali/ali_ws/AprilTag/devel/include
-Libs: -L${prefix}/lib 
-Requires: 

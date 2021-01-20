@@ -1,0 +1,8 @@
+prefix=/root/ali_ws/AprilTag/ali_ws/install
+
+Name: apriltag_ali
+Description: Description of apriltag_ali
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

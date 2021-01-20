@@ -1,0 +1,6 @@
+/usr/local/bin/apriltag_demo
+/usr/local/bin/maketags
+/usr/local/lib/libapriltag.so
+/usr/local/lib/libapriltag_opencv.so
+/usr/local/bin/apriltag_opencv_demo
+/usr/local/bin/apriltag_camera_demo
