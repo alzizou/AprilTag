@@ -9,7 +9,8 @@ from std_msgs.msg import String
 from pupil_apriltags import Detector
 
 camera_pose = [0.0,0.0,0.0]
-cam_param = (2000,200,200,200)
+cam_param = (668.311,671.090,319.500,239.500)
+# (fx, fy, cx, cy)
 
 tag_rel_pose = [0.0,0.0,0.0]
 cam_obj = cv2.VideoCapture(0)
@@ -168,7 +169,7 @@ def detect_ali():
 		if ((not results)==0):
 			print(results[0].center)
 			print(results[0].corners)
-			april_TF_matrix, err1, err2 = detector.detection_pose(results[0], cam_param, tag_size=1, z_sign=1)
+			april_TF_matrix, err1, err2 = detector.detection_pose(results[0], cam_param, tag_size=0.125, z_sign=1)
 			print(april_TF_matrix)
 			print(err1)
 			print(err2)

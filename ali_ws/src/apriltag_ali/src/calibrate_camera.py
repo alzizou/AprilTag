@@ -44,7 +44,7 @@ def main():
     imagesize = None
 
     win = 'Calibrate'
-    cv2.namedWindow(win)
+#    cv2.namedWindow(win)
 
     ipoints = []
 
